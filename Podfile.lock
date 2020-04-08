@@ -6,10 +6,10 @@ PODS:
     - Satin
 
 DEPENDENCIES:
-  - Forge (from `../Forge`)
-  - Satin (from `../Satin`)
+  - "Forge (from `git@github.com:Hi-Rez/Forge.git`)"
+  - "Satin (from `git@github.com:Hi-Rez/Satin.git`)"
   - SwiftFormat/CLI
-  - Youi (from `../Youi`)
+  - "Youi (from `git@github.com:Hi-Rez/Youi.git`)"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -17,11 +17,22 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Forge:
-    :path: "../Forge"
+    :git: "git@github.com:Hi-Rez/Forge.git"
   Satin:
-    :path: "../Satin"
+    :git: "git@github.com:Hi-Rez/Satin.git"
   Youi:
-    :path: "../Youi"
+    :git: "git@github.com:Hi-Rez/Youi.git"
+
+CHECKOUT OPTIONS:
+  Forge:
+    :commit: 153156fe94a1c99a022731cf308ed9d08c7299c0
+    :git: "git@github.com:Hi-Rez/Forge.git"
+  Satin:
+    :commit: 2921357d024e2029d139479ce1fbf1b21f8a2b43
+    :git: "git@github.com:Hi-Rez/Satin.git"
+  Youi:
+    :commit: f97b156fd0909d7ef72cd0adf97fd46241962086
+    :git: "git@github.com:Hi-Rez/Youi.git"
 
 SPEC CHECKSUMS:
   Forge: 235ac8e6a6ac48d2db3be3bae3723ec6180b0ba1
@@ -29,6 +40,6 @@ SPEC CHECKSUMS:
   SwiftFormat: 53968b5cc5d466727e796f789fa9be6c38da34cb
   Youi: 3028987049f5a52304333c8606e3f2dc78e3ef67
 
-PODFILE CHECKSUM: 060aa1e439707303fa9f064c11961470cc70736c
+PODFILE CHECKSUM: 3e9ee6b00e2ac3ffc2da1689602c537a8f58f6e2
 
 COCOAPODS: 1.7.5
