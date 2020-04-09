@@ -111,10 +111,7 @@
 		E13B5553230F3D41009E143D = {
 			isa = PBXGroup;
 			children = (
-				E13B5558230F3D42009E143D /* Shared */,
-				E13B5585230F3D44009E143D /* macOS */,
-				E13B5563230F3D44009E143D /* iOS */,
-				E13B5574230F3D44009E143D /* tvOS */,
+				E17955EA243FA74F00B0D2F4 /* Source */,
 				E13B5562230F3D44009E143D /* Products */,
 				A9C68369686BB768A3FAFBC2 /* Pods */,
 				9E58469676EB2E6F14C21A65 /* Frameworks */,
@@ -166,6 +163,17 @@
 				E1C45ADD243E6351007D0207 /* MainMenu.xib */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		E17955EA243FA74F00B0D2F4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E13B5558230F3D42009E143D /* Shared */,
+				E13B5585230F3D44009E143D /* macOS */,
+				E13B5563230F3D44009E143D /* iOS */,
+				E13B5574230F3D44009E143D /* tvOS */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,13 +590,13 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC7PU3PUHS;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hi-rez.template";
 				PRODUCT_NAME = Template;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -602,13 +610,13 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC7PU3PUHS;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hi-rez.template";
 				PRODUCT_NAME = Template;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -623,12 +631,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC7PU3PUHS;
-				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hi-rez.template";
 				PRODUCT_NAME = Template;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
@@ -643,12 +651,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC7PU3PUHS;
-				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hi-rez.template";
 				PRODUCT_NAME = Template;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
@@ -667,13 +675,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CC7PU3PUHS;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/macOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Template;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hi-rez.template";
 				PRODUCT_NAME = Template;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -689,13 +697,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CC7PU3PUHS;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/macOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.syedrezaali.Template;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hi-rez.template";
 				PRODUCT_NAME = Template;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
