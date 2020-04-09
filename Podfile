@@ -10,6 +10,7 @@ target 'Template macOS' do
   pod 'Forge', :git => 'git@github.com:Hi-Rez/Forge.git'
   pod 'Satin', :git => 'git@github.com:Hi-Rez/Satin.git'
   pod 'Youi', :git => 'git@github.com:Hi-Rez/Youi.git'
+  pod 'SwiftFormat/CLI'
 end
 
 
@@ -18,6 +19,7 @@ target 'Template iOS' do
   pod 'Forge', :git => 'git@github.com:Hi-Rez/Forge.git'
   pod 'Satin', :git => 'git@github.com:Hi-Rez/Satin.git'
   pod 'Youi', :git => 'git@github.com:Hi-Rez/Youi.git'
+  pod 'SwiftFormat/CLI'
 end
 
 
@@ -25,4 +27,5 @@ target 'Template tvOS' do
   platform :tvos, '12.4'
   pod 'Forge', :git => 'git@github.com:Hi-Rez/Forge.git'
   pod 'Satin', :git => 'git@github.com:Hi-Rez/Satin.git'
+  pod 'SwiftFormat/CLI'
 end

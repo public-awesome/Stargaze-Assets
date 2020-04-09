@@ -1,13 +1,19 @@
 PODS:
   - Forge (0.1.0)
   - Satin (0.2.0)
+  - SwiftFormat/CLI (0.44.7)
   - Youi (0.0.1):
     - Satin
 
 DEPENDENCIES:
   - "Forge (from `git@github.com:Hi-Rez/Forge.git`)"
   - "Satin (from `git@github.com:Hi-Rez/Satin.git`)"
+  - SwiftFormat/CLI
   - "Youi (from `git@github.com:Hi-Rez/Youi.git`)"
+
+SPEC REPOS:
+  trunk:
+    - SwiftFormat
 
 EXTERNAL SOURCES:
   Forge:
@@ -31,8 +37,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Forge: 235ac8e6a6ac48d2db3be3bae3723ec6180b0ba1
   Satin: 9f47fbc7253d386ab5248fdf5227b1b35d68c1bc
+  SwiftFormat: fd97e27b8de5a46c9d1988bf1db1dc92e79f86a3
   Youi: 3028987049f5a52304333c8606e3f2dc78e3ef67
 
-PODFILE CHECKSUM: 04986c0fed216cb4c1bfdeef2b1a14904db9d830
+PODFILE CHECKSUM: a05740f7c500fb3aede0b95bd1666368436932f4
 
 COCOAPODS: 1.8.4
