@@ -6,6 +6,9 @@
 //  Copyright © 2019 Reza Ali. All rights reserved.
 //
 
+import CoreGraphics
+import CoreText
+
 import Metal
 import MetalKit
 
@@ -13,108 +16,84 @@ import Forge
 import Satin
 
 class Renderer: Forge.Renderer {
-    var paramTest: IntParameter!
-    var library: MTLLibrary!
-    var material: Material!
-    var geometry: Geometry!
-    var mesh: Mesh!
-    var scene: Object!
-    var context: Context!
+    var scene = Object()
     
-    var perspCamera: ArcballPerspectiveCamera!
-    var cameraController: ArcballCameraController!
-    var renderer: Satin.Renderer!
+    lazy var context: Context = {
+        Context(device, sampleCount, colorPixelFormat, depthPixelFormat, stencilPixelFormat)
+    }()
+    
+    lazy var camera: ArcballPerspectiveCamera = {
+        let camera = ArcballPerspectiveCamera()
+        camera.position = simd_make_float3(0.0, 0.0, 40.0)
+        camera.near = 0.001
+        camera.far = 1000.0
+        return camera
+    }()
+    
+    lazy var cameraController: ArcballCameraController = {
+        ArcballCameraController(camera: camera, view: mtkView, defaultPosition: camera.position, defaultOrientation: camera.orientation)
+    }()
+    
+    lazy var renderer: Satin.Renderer = {
+        let renderer = Satin.Renderer(context: context, scene: scene, camera: camera)
+        renderer.clearColor = .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        return renderer
+    }()
     
     required init?(metalKitView: MTKView) {
         super.init(metalKitView: metalKitView)
     }
     
     override func setupMtkView(_ metalKitView: MTKView) {
+        metalKitView.sampleCount = 1
         metalKitView.depthStencilPixelFormat = .depth32Float
-        metalKitView.autoResizeDrawable = false
-        #if os(iOS)
-        switch UIDevice.current.userInterfaceIdiom {
-        case .pad:
-            metalKitView.preferredFramesPerSecond = 120
-        case .phone:
-            metalKitView.preferredFramesPerSecond = 60
-        case .unspecified:
-            metalKitView.preferredFramesPerSecond = 60
-        case .tv:
-            metalKitView.preferredFramesPerSecond = 60
-        case .carPlay:
-            metalKitView.preferredFramesPerSecond = 60
-        @unknown default:
-            metalKitView.preferredFramesPerSecond = 60
-        }
-        #else
         metalKitView.preferredFramesPerSecond = 60
-        #endif
     }
     
     override func setup() {
-        setupContext()
-        setupLibrary()
-        setupMaterial()
-        setupGeometry()
-        setupMesh()
-        setupScene()
-        setupCamera()
-        setupCameraController()
-        setupRenderer()
+        setupText()
     }
     
-    func setupContext() {
-        context = Context(device, sampleCount, colorPixelFormat, depthPixelFormat, stencilPixelFormat)
-    }
-    
-    func setupLibrary() {
-        library = device.makeDefaultLibrary()
-    }
-    
-    func setupMaterial() {
-        material = Material(
-            library: library,
-            vertex: "basic_vertex",
-            fragment: "basic_fragment",
-            label: "basic",
-            context: context
+    func setupText() {
+        let input = "HELLO\nWORLD"
+        
+        /*
+         Times
+         AvenirNext-UltraLight
+         Helvetica
+         SFMono-HeavyItalic
+         SFProRounded-Thin
+         SFProRounded-Heavy
+         */
+        
+        let geo = TextGeometry(
+            text: input,
+            fontName: "SFProRounded-Heavy",
+            fontSize: 8,
+            bounds: CGSize(width: -1, height: -1),
+            pivot:[0,0],
+            textAlignment: .center,
+            verticalAlignment: .center
         )
-    }
-    
-    func setupGeometry() {
-        geometry = BoxGeometry(size: 2)
-    }
-    
-    func setupMesh() {
-        mesh = Mesh(geometry: geometry, material: material)
-    }
-    
-    func setupScene() {
-        scene = Object()
+        
+        let mat = BasicColorMaterial([1.0, 1.0, 1.0, 0.25], .additive)
+        mat.depthWriteEnabled = false
+        let mesh = Mesh(geometry: geo, material: mat)
         scene.add(mesh)
-    }
-    
-    func setupCamera() {
-        perspCamera = ArcballPerspectiveCamera()
-        perspCamera.position = simd_make_float3(0.0, 0.0, 9.0)
-        perspCamera.near = 0.001
-        perspCamera.far = 100.0
-    }
-    
-    func setupCameraController() {
-        if cameraController == nil {
-            cameraController = ArcballCameraController(camera: perspCamera, view: mtkView, defaultPosition: perspCamera.position, defaultOrientation: perspCamera.orientation)
-        }
-        else {
-            cameraController.camera = perspCamera
-        }
-    }
-    
-    func setupRenderer() {
-        renderer = Satin.Renderer(context: context,
-                                  scene: scene,
-                                  camera: perspCamera)
+                
+        let pGeo = Geometry()
+        pGeo.vertexData = geo.vertexData
+        pGeo.primitiveType = .point
+        let pmat = BasicPointMaterial([1, 1, 1, 0.5], 6, .alpha)
+        pmat.depthWriteEnabled = false
+        let pmesh = Mesh(geometry: pGeo, material: pmat)
+        scene.add(pmesh)
+        
+        let fmat = BasicColorMaterial([1, 1, 1, 0.125], .additive)
+        fmat.depthWriteEnabled = false
+        let fmesh = Mesh(geometry: geo, material: fmat)
+        fmesh.triangleFillMode = .lines
+        scene.add(fmesh)
     }
     
     override func update() {
@@ -128,7 +107,7 @@ class Renderer: Forge.Renderer {
     }
     
     override func resize(_ size: (width: Float, height: Float)) {
-        perspCamera.aspect = size.width / size.height
+        camera.aspect = size.width / size.height
         renderer.resize(size)
     }
 }

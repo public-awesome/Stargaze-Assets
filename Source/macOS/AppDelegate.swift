@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import MetalKit
+
 import Forge
 
 @NSApplicationMain
@@ -23,17 +25,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
 
         self.window = window
-        
         self.viewController = Forge.ViewController(nibName: .init("ViewController"), bundle: Bundle(for: Forge.ViewController.self))
-        self.viewController.rendererClassName = "Renderer"
-
         guard let view = self.viewController?.view else { return }
+        self.viewController.renderer = Renderer(metalKitView: view as! MTKView)
         guard let contentView = window.contentView else { return }
-
+        
         view.frame = contentView.bounds
         view.autoresizingMask = [.width, .height]
         contentView.addSubview(view)
-
+        
         window.setFrameAutosaveName("Template")
         window.titlebarAppearsTransparent = true
         window.title = ""
