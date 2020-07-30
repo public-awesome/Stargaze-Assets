@@ -12,7 +12,7 @@ DEPENDENCIES:
   - Youi (from `../Youi`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - SwiftFormat
 
 EXTERNAL SOURCES:
@@ -31,4 +31,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 6f1954e1a71f5d859344c472758fe3423b49d332
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
