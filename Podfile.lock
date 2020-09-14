@@ -12,7 +12,7 @@ DEPENDENCIES:
   - Youi (from `../Youi`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - SwiftFormat
 
 EXTERNAL SOURCES:

@@ -13,9 +13,6 @@
 		E13B5565230F3D44009E143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B5564230F3D44009E143D /* AppDelegate.swift */; };
 		E13B5576230F3D44009E143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B5575230F3D44009E143D /* AppDelegate.swift */; };
 		E13B5587230F3D44009E143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B5586230F3D44009E143D /* AppDelegate.swift */; };
-		E13B558E230F3D44009E143D /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E13B5559230F3D42009E143D /* Shaders.metal */; };
-		E13B558F230F3D44009E143D /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E13B5559230F3D42009E143D /* Shaders.metal */; };
-		E13B5590230F3D44009E143D /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E13B5559230F3D42009E143D /* Shaders.metal */; };
 		E13B5591230F3D44009E143D /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B555A230F3D42009E143D /* Renderer.swift */; };
 		E13B5592230F3D44009E143D /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B555A230F3D42009E143D /* Renderer.swift */; };
 		E13B5593230F3D44009E143D /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B555A230F3D42009E143D /* Renderer.swift */; };
@@ -36,7 +33,6 @@
 		94125B265304CD9CDC73358B /* Pods_Template_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Template_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C369A01A3602BBC812443140 /* Pods-Template tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Template tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Template tvOS/Pods-Template tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC7DE9A9F5DA25ED8E40C20 /* Pods-Example macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example macOS.debug.xcconfig"; path = "Target Support Files/Pods-Example macOS/Pods-Example macOS.debug.xcconfig"; sourceTree = "<group>"; };
-		E13B5559230F3D42009E143D /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		E13B555A230F3D42009E143D /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		E13B5561230F3D44009E143D /* Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Template.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13B5564230F3D44009E143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +117,6 @@
 		E13B5558230F3D42009E143D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E13B5559230F3D42009E143D /* Shaders.metal */,
 				E13B555A230F3D42009E143D /* Renderer.swift */,
 			);
 			path = Shared;
@@ -447,7 +442,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13B5591230F3D44009E143D /* Renderer.swift in Sources */,
-				E13B558E230F3D44009E143D /* Shaders.metal in Sources */,
 				E13B5565230F3D44009E143D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,7 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13B5592230F3D44009E143D /* Renderer.swift in Sources */,
-				E13B558F230F3D44009E143D /* Shaders.metal in Sources */,
 				E13B5576230F3D44009E143D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +460,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13B5593230F3D44009E143D /* Renderer.swift in Sources */,
-				E13B5590230F3D44009E143D /* Shaders.metal in Sources */,
 				E13B5587230F3D44009E143D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

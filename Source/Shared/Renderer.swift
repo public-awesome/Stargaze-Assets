@@ -23,7 +23,7 @@ class Renderer: Forge.Renderer {
     }()
     
     lazy var camera: PerspectiveCamera = {
-        let camera = PerspectiveCamera()i
+        let camera = PerspectiveCamera()
         camera.position = simd_make_float3(0.0, 0.0, 40.0)
         camera.near = 0.001
         camera.far = 1000.0
@@ -39,10 +39,6 @@ class Renderer: Forge.Renderer {
         renderer.clearColor = .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
         return renderer
     }()
-    
-    required init?(metalKitView: MTKView) {
-        super.init(metalKitView: metalKitView)
-    }
     
     override func setupMtkView(_ metalKitView: MTKView) {
         metalKitView.sampleCount = 1
