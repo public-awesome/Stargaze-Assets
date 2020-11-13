@@ -6,7 +6,7 @@ install! 'cocoapods',
 use_frameworks!
 
 target 'Template macOS' do
-  platform :osx, '10.14'
+  platform :osx, '10.15'
   pod 'Forge', :path => '../Forge'
   pod 'Satin', :path => '../Satin'
   pod 'Youi', :path => '../Youi'
@@ -15,16 +15,14 @@ end
 
 
 target 'Template iOS' do
-  platform :ios, '12.4'
+  platform :ios, '13.0'
   pod 'Forge', :path => '../Forge'
   pod 'Satin', :path => '../Satin'
-  pod 'Youi', :path => '../Youi'
   pod 'SwiftFormat/CLI'
 end
 
-
 target 'Template tvOS' do
-  platform :tvos, '12.4'
+  platform :tvos, '13.0'
   pod 'Forge', :path => '../Forge'
   pod 'Satin', :path => '../Satin'
   pod 'SwiftFormat/CLI'
