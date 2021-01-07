@@ -5,10 +5,7 @@
 Clone Satin, Forge & Youi one folder up from this Template
 
 ```
-cd .. &&
-git clone git@github.com:Hi-Rez/Satin.git &&
-git clone git@github.com:Hi-Rez/Forge.git &&
-git clone git@github.com:Hi-Rez/Youi.git
+cd .. && git clone git@github.com:Hi-Rez/Satin.git && git clone git@github.com:Hi-Rez/Forge.git && git clone git@github.com:Hi-Rez/Youi.git
 ```
 
 Install Bundler using:
