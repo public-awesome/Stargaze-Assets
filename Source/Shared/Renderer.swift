@@ -6,17 +6,60 @@
 //  Copyright © 2019 Reza Ali. All rights reserved.
 //
 
-import CoreGraphics
-import CoreText
-
 import Metal
 import MetalKit
 
 import Forge
 import Satin
 
-class Renderer: Forge.Renderer {
-    var scene = Object()
+#if os(macOS)
+    import Youi
+#endif
+
+class BlobMaterial: LiveMaterial {}
+
+class Renderer: Forge.Renderer, MaterialDelegate {
+    var assetsURL: URL {
+        let url = Bundle.main.resourceURL!
+        return url.appendingPathComponent("Assets")
+    }
+    
+    var pipelinesURL: URL {
+        assetsURL.appendingPathComponent("Pipelines")
+    }
+    
+    lazy var blobMaterial: BlobMaterial = {
+        let material = BlobMaterial(pipelinesURL: pipelinesURL)
+        material.delegate = self
+        return material
+    }()
+    
+    #if os(macOS)
+        var inspectorWindow: InspectorWindow?
+        var _updateInspector: Bool = true
+        var observers: [NSKeyValueObservation] = []
+    #endif
+    
+    var bgColorParam = Float4Parameter("Background", [1, 1, 1, 1], .colorpicker)
+    var blobVisibleParam = BoolParameter("Show Blob", true, .toggle)
+    
+    lazy var appParams: ParameterGroup = {
+        let params = ParameterGroup("Controls")
+        params.append(bgColorParam)
+        params.append(blobVisibleParam)
+        return params
+    }()
+    
+    lazy var blobMesh: Mesh = {
+        let mesh = Mesh(geometry: IcoSphereGeometry(radius: 2.0, res: 5), material: blobMaterial)
+        return mesh
+    }()
+    
+    lazy var scene: Object = {
+        let scene = Object()
+        scene.add(blobMesh)
+        return scene
+    }()
     
     lazy var context: Context = {
         Context(device, sampleCount, colorPixelFormat, depthPixelFormat, stencilPixelFormat)
@@ -24,9 +67,9 @@ class Renderer: Forge.Renderer {
     
     lazy var camera: PerspectiveCamera = {
         let camera = PerspectiveCamera()
-        camera.position = simd_make_float3(0.0, 0.0, 40.0)
-        camera.near = 0.001
-        camera.far = 1000.0
+        camera.position = simd_make_float3(0.0, 0.0, 10.0)
+        camera.near = 0.01
+        camera.far = 100.0
         return camera
     }()
     
@@ -36,8 +79,12 @@ class Renderer: Forge.Renderer {
     
     lazy var renderer: Satin.Renderer = {
         let renderer = Satin.Renderer(context: context, scene: scene, camera: camera)
-        renderer.clearColor = .init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        renderer.setClearColor(bgColorParam.value)
         return renderer
+    }()
+    
+    lazy var startTime: CFAbsoluteTime = {
+        CFAbsoluteTimeGetCurrent()
     }()
     
     override func setupMtkView(_ metalKitView: MTKView) {
@@ -46,54 +93,26 @@ class Renderer: Forge.Renderer {
         metalKitView.preferredFramesPerSecond = 60
     }
     
-    override func setup() {
-        setupText()
+    override init() {
+        // do stuff here
     }
     
-    func setupText() {
-        let input = "HELLO\nWORLD"
-        
-        /*
-         Times
-         AvenirNext-UltraLight
-         Helvetica
-         SFMono-HeavyItalic
-         SFProRounded-Thin
-         SFProRounded-Heavy
-         */
-        
-        let geo = TextGeometry(
-            text: input,
-            fontName: "SFProRounded-Heavy",
-            fontSize: 8,
-            bounds: CGSize(width: -1, height: -1),
-            pivot:[0,0],
-            textAlignment: .center,
-            verticalAlignment: .center
-        )
-        
-        let mat = BasicColorMaterial([1.0, 1.0, 1.0, 0.25], .additive)
-        mat.depthWriteEnabled = false
-        let mesh = Mesh(geometry: geo, material: mat)
-        scene.add(mesh)
-                
-        let pGeo = Geometry()
-        pGeo.vertexData = geo.vertexData
-        pGeo.primitiveType = .point
-        let pmat = BasicPointMaterial([1, 1, 1, 0.5], 6, .alpha)
-        pmat.depthWriteEnabled = false
-        let pmesh = Mesh(geometry: pGeo, material: pmat)
-        scene.add(pmesh)
-        
-        let fmat = BasicColorMaterial([1, 1, 1, 0.125], .additive)
-        fmat.depthWriteEnabled = false
-        let fmesh = Mesh(geometry: geo, material: fmat)
-        fmesh.triangleFillMode = .lines
-        scene.add(fmesh)
+    override func setup() {
+        // or do stuff here
+        setupObservers()
     }
+    
+    func getTime() -> Float {
+        return Float(CFAbsoluteTimeGetCurrent() - startTime)
+    }
+
     
     override func update() {
+        blobMaterial.set("Time", getTime())
         cameraController.update()
+        #if os(macOS)
+            updateInspector()
+        #endif
     }
     
     override func draw(_ view: MTKView, _ commandBuffer: MTLCommandBuffer) {
@@ -105,4 +124,19 @@ class Renderer: Forge.Renderer {
         camera.aspect = size.width / size.height
         renderer.resize(size)
     }
+    
+    func updated(material: Material) {
+        print("Material Updated: \(material.label)")
+        #if os(macOS)
+            _updateInspector = true
+        #endif
+    }
+    
+    #if os(macOS)
+    override func keyDown(with event: NSEvent) {
+        if event.characters == "e" {
+            openEditor()
+        }
+    }
+    #endif
 }
