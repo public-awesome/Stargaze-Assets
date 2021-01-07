@@ -1,8 +1,8 @@
 PODS:
-  - Forge (1.0.6)
-  - Satin (1.0.4)
+  - Forge (1.0.8)
+  - Satin (1.2.6)
   - SwiftFormat/CLI (0.46.3)
-  - Youi (1.0.0):
+  - Youi (1.0.1):
     - Satin
 
 DEPENDENCIES:
@@ -24,10 +24,10 @@ EXTERNAL SOURCES:
     :path: "../Youi"
 
 SPEC CHECKSUMS:
-  Forge: 51249d32e43237a51047404ff698dc633f3ac584
-  Satin: 76e5134e62afd8d24be5befa21fe418a412f1e9e
+  Forge: 9e4267d3f0f72bb486a3b62f5cc0afca6dee6856
+  Satin: 20bd91e1ea9eb4b165ac5679978b366dd42185fe
   SwiftFormat: b639417da9e024b9e782f917bc9a080cf75bcb37
-  Youi: 7f460a275a8ac4bdfe5eb441b63e0ae03c835791
+  Youi: e46c797d73f07c3baf3f4e5ac40e75122d09b1ba
 
 PODFILE CHECKSUM: aa28c43a864d48ffdca787c86a73dd7440aa0a9d
 
