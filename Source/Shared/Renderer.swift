@@ -11,9 +11,8 @@ import MetalKit
 
 import Forge
 import Satin
-
-#if os(macOS)
-    import Youi
+#if os(macOS) || os(iOS)
+import Youi
 #endif
 
 class BlobMaterial: LiveMaterial {}
@@ -34,11 +33,12 @@ class Renderer: Forge.Renderer, MaterialDelegate {
         return material
     }()
     
-    #if os(macOS)
-        var inspectorWindow: InspectorWindow?
-        var _updateInspector: Bool = true
-        var observers: [NSKeyValueObservation] = []
+    #if os(macOS) || os(iOS)
+    var inspectorWindow: InspectorWindow?
+    var _updateInspector: Bool = true
     #endif
+    
+    var observers: [NSKeyValueObservation] = []
     
     var bgColorParam = Float4Parameter("Background", [1, 1, 1, 1], .colorpicker)
     var blobVisibleParam = BoolParameter("Show Blob", true, .toggle)
@@ -110,7 +110,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     override func update() {
         blobMaterial.set("Time", getTime())
         cameraController.update()
-        #if os(macOS)
+        #if os(macOS) || os(iOS)
             updateInspector()
         #endif
     }
@@ -127,7 +127,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     
     func updated(material: Material) {
         print("Material Updated: \(material.label)")
-        #if os(macOS)
+        #if os(macOS) || os(iOS)
             _updateInspector = true
         #endif
     }

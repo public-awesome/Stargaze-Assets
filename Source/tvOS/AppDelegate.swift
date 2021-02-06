@@ -16,8 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        viewController = Forge.ViewController(nibName: .init("ViewController"), bundle: Bundle(for: Forge.ViewController.self))
-        viewController?.rendererClassName = "Renderer"
+        let viewController = Forge.ViewController(nibName: .init("ViewController"), bundle: Bundle(for: Forge.ViewController.self))
+        viewController.renderer = Renderer()
+        self.viewController = viewController
 
         guard let view = self.viewController?.view else { return false }
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]

@@ -15,9 +15,10 @@ end
 
 
 target 'Template iOS' do
-  platform :ios, '13.0'
+  platform :ios, '14.0'
   pod 'Forge', :path => '../Forge'
   pod 'Satin', :path => '../Satin'
+  pod 'Youi', :path => '../Youi'
   pod 'SwiftFormat/CLI'
 end
 

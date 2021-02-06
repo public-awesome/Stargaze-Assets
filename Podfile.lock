@@ -1,8 +1,8 @@
 PODS:
-  - Forge (1.0.8)
-  - Satin (1.2.6)
+  - Forge (1.0.9)
+  - Satin (1.3.0)
   - SwiftFormat/CLI (0.46.3)
-  - Youi (1.0.1):
+  - Youi (2.0.1):
     - Satin
 
 DEPENDENCIES:
@@ -24,11 +24,11 @@ EXTERNAL SOURCES:
     :path: "../Youi"
 
 SPEC CHECKSUMS:
-  Forge: 9e4267d3f0f72bb486a3b62f5cc0afca6dee6856
-  Satin: 20bd91e1ea9eb4b165ac5679978b366dd42185fe
+  Forge: abca50ae8838a6d745b9a4e204bc2cb800546cef
+  Satin: d312173abf4150be9df5d44e8e969999221c8ed8
   SwiftFormat: b639417da9e024b9e782f917bc9a080cf75bcb37
-  Youi: e46c797d73f07c3baf3f4e5ac40e75122d09b1ba
+  Youi: 4d9f8b810a1c857526c9bffc2c21ce3b65370ee9
 
-PODFILE CHECKSUM: aa28c43a864d48ffdca787c86a73dd7440aa0a9d
+PODFILE CHECKSUM: 4a644782a7c80bfede094de75d85369d4b6a26b8
 
 COCOAPODS: 1.8.4
