@@ -18,13 +18,56 @@ import Youi
 class BlobMaterial: LiveMaterial {}
 
 class Renderer: Forge.Renderer, MaterialDelegate {
+    // MARK: - Paths
+
     var assetsURL: URL {
-        let url = Bundle.main.resourceURL!
-        return url.appendingPathComponent("Assets")
+        getDocumentsAssetsDirectoryURL()
+    }
+    
+    var mediaURL: URL {
+        getDocumentsMediaDirectoryURL()
+    }
+    
+    var modelsURL: URL {
+        getDocumentsMediaDirectoryURL()
+    }
+    
+    var parametersURL: URL {
+        getDocumentsParametersDirectoryURL()
     }
     
     var pipelinesURL: URL {
-        assetsURL.appendingPathComponent("Pipelines")
+        getDocumentsPipelinesDirectoryURL()
+    }
+    
+    var presetsURL: URL {
+        getDocumentsPresetsDirectoryURL()
+    }
+    
+    var settingsFolderURL: URL {
+        getDocumentsSettingsDirectoryURL()
+    }
+    
+    var texturesURL: URL {
+        getDocumentsTexturesDirectoryURL()
+    }
+    
+    var dataURL: URL {
+        getDocumentsDataDirectoryURL()
+    }
+    
+    var paramKeys: [String] {
+        return [
+            "Controls",
+            "Blob Material"
+        ]
+    }
+    
+    var params: [String: ParameterGroup?] {
+        return [
+            "Controls": appParams,
+            "Blob Material": blobMaterial.parameters
+        ]
     }
     
     lazy var blobMaterial: BlobMaterial = {
@@ -41,7 +84,12 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     var observers: [NSKeyValueObservation] = []
     
     var bgColorParam = Float4Parameter("Background", [1, 1, 1, 1], .colorpicker)
-    var blobVisibleParam = BoolParameter("Show Blob", true, .toggle)
+    lazy var blobVisibleParam: BoolParameter = {
+        let param = BoolParameter("Show Blob", true, .toggle) { [unowned self] value in
+            self.blobMesh.visible = value
+        }
+        return param
+    }()
     
     lazy var appParams: ParameterGroup = {
         let params = ParameterGroup("Controls")
@@ -51,8 +99,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     }()
     
     lazy var blobMesh: Mesh = {
-        let mesh = Mesh(geometry: IcoSphereGeometry(radius: 2.0, res: 5), material: blobMaterial)
-        return mesh
+        Mesh(geometry: IcoSphereGeometry(radius: 2.0, res: 5), material: blobMaterial)
     }()
     
     lazy var scene: Object = {
@@ -92,26 +139,26 @@ class Renderer: Forge.Renderer, MaterialDelegate {
         metalKitView.depthStencilPixelFormat = .depth32Float
         metalKitView.preferredFramesPerSecond = 60
     }
-    
-    override init() {
-        // do stuff here
+        
+    deinit {
+        print("Saving")
+        save()
     }
-    
+
     override func setup() {
-        // or do stuff here
         setupObservers()
+        load()
     }
     
     func getTime() -> Float {
         return Float(CFAbsoluteTimeGetCurrent() - startTime)
     }
 
-    
     override func update() {
         blobMaterial.set("Time", getTime())
         cameraController.update()
         #if os(macOS) || os(iOS)
-            updateInspector()
+        updateInspector()
         #endif
     }
     
@@ -128,15 +175,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     func updated(material: Material) {
         print("Material Updated: \(material.label)")
         #if os(macOS) || os(iOS)
-            _updateInspector = true
+        _updateInspector = true
         #endif
     }
-    
-    #if os(macOS)
-    override func keyDown(with event: NSEvent) {
-        if event.characters == "e" {
-            openEditor()
-        }
-    }
-    #endif
 }

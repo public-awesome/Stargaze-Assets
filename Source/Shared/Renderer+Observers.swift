@@ -28,10 +28,5 @@ extension Renderer {
         observers.append(bgColorParam.observe(\.y, changeHandler: bgColorCb))
         observers.append(bgColorParam.observe(\.z, changeHandler: bgColorCb))
         observers.append(bgColorParam.observe(\.w, changeHandler: bgColorCb))
-        
-        observers.append(blobVisibleParam.observe(\.value) { [unowned self] _, _ in
-            // or you can do something like this in the update function
-            self.blobMesh.visible = blobVisibleParam.value
-        })
     }
 }

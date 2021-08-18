@@ -13,6 +13,8 @@ import Youi
 
 extension Renderer {
     #if os(macOS) || os(iOS)
+    // MARK: - UI
+    
     func setupInspector() {
         var panelOpenStates: [String: Bool] = [:]
         if let inspectorWindow = self.inspectorWindow, let inspector = inspectorWindow.inspectorViewController {
@@ -28,12 +30,11 @@ extension Renderer {
             #if os(macOS)
             let inspectorWindow = InspectorWindow("Inspector")
             inspectorWindow.setIsVisible(true)
-            self.inspectorWindow = inspectorWindow
             #elseif os(iOS)
             let inspectorWindow = InspectorWindow("Inspector", edge: .right)
             mtkView.addSubview(inspectorWindow.view)
-            self.inspectorWindow = inspectorWindow
             #endif
+            self.inspectorWindow = inspectorWindow
         }
         
         if let inspectorWindow = self.inspectorWindow, let inspectorViewController = inspectorWindow.inspectorViewController {
@@ -41,9 +42,7 @@ extension Renderer {
                 inspectorViewController.removeAllPanels()
             }
             
-            // add params here
-            inspectorViewController.addPanel(PanelViewController(appParams.label, parameters: appParams))
-            inspectorViewController.addPanel(PanelViewController("\(blobMaterial.label) Material", parameters: blobMaterial.parameters))
+            updateUI(inspectorViewController)
             
             let panels = inspectorViewController.getPanels()
             for panel in panels {
@@ -56,12 +55,29 @@ extension Renderer {
         }
     }
     
+    func updateUI(_ inspectorViewController: InspectorViewController) {
+        let paramters = params
+        for key in paramKeys {
+            if let param = paramters[key], let p = param {
+                let panel = PanelViewController(key, parameters: p)
+                inspectorViewController.addPanel(panel)
+            }
+        }
+    }
+    
     func updateInspector() {
         if _updateInspector {
             DispatchQueue.main.async { [unowned self] in
                 self.setupInspector()
             }
             _updateInspector = false
+        }
+    }
+    
+    public func toggleInspector()
+    {
+        if let inspectorWindow = self.inspectorWindow {
+            inspectorWindow.setIsVisible(!inspectorWindow.isVisible)
         }
     }
     #endif

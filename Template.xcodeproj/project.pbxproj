@@ -3,13 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3BF8B1FC2E04BE0219F1220E /* Pods_Template_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235ADC7DECD164959E781434 /* Pods_Template_macOS.framework */; };
 		8F70E37B98890E0CC4C1132A /* Pods_Template_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94125B265304CD9CDC73358B /* Pods_Template_tvOS.framework */; };
 		B543DDF88FC908323A944670 /* Pods_Template_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47B503526E3CE0B4E39C8334 /* Pods_Template_iOS.framework */; };
+		E1365D1326CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365D1226CD912200BAFF71 /* Renderer+Save+Load.swift */; };
+		E1365D1426CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365D1226CD912200BAFF71 /* Renderer+Save+Load.swift */; };
+		E1365D1526CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365D1226CD912200BAFF71 /* Renderer+Save+Load.swift */; };
+		E1365D1826CD919A00BAFF71 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365D1726CD919A00BAFF71 /* Paths.swift */; };
+		E1365D1926CD919A00BAFF71 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365D1726CD919A00BAFF71 /* Paths.swift */; };
+		E1365D1A26CD919A00BAFF71 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365D1726CD919A00BAFF71 /* Paths.swift */; };
 		E13B5565230F3D44009E143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B5564230F3D44009E143D /* AppDelegate.swift */; };
 		E13B5576230F3D44009E143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B5575230F3D44009E143D /* AppDelegate.swift */; };
 		E13B5587230F3D44009E143D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B5586230F3D44009E143D /* AppDelegate.swift */; };
@@ -44,6 +50,9 @@
 		94125B265304CD9CDC73358B /* Pods_Template_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Template_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C369A01A3602BBC812443140 /* Pods-Template tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Template tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Template tvOS/Pods-Template tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC7DE9A9F5DA25ED8E40C20 /* Pods-Example macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example macOS.debug.xcconfig"; path = "Target Support Files/Pods-Example macOS/Pods-Example macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E1365D1226CD912200BAFF71 /* Renderer+Save+Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Renderer+Save+Load.swift"; sourceTree = "<group>"; };
+		E1365D1726CD919A00BAFF71 /* Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
+		E1365D2526CD923C00BAFF71 /* Template.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Template.entitlements; sourceTree = "<group>"; };
 		E13B555A230F3D42009E143D /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		E13B5561230F3D44009E143D /* Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Template.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13B5564230F3D44009E143D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,9 +128,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E1365D1626CD918F00BAFF71 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E1365D1726CD919A00BAFF71 /* Paths.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		E13B5553230F3D41009E143D = {
 			isa = PBXGroup;
 			children = (
+				E1365D2526CD923C00BAFF71 /* Template.entitlements */,
 				E14B673C25A783DE00A9D59B /* Assets */,
 				E17955EA243FA74F00B0D2F4 /* Source */,
 				E13B5562230F3D44009E143D /* Products */,
@@ -133,10 +151,12 @@
 		E13B5558230F3D42009E143D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E1365D1626CD918F00BAFF71 /* Utilities */,
 				E13B555A230F3D42009E143D /* Renderer.swift */,
 				E14B674F25A785C800A9D59B /* Renderer+Inspector.swift */,
 				E14B675025A785C800A9D59B /* Renderer+Observers.swift */,
 				E14B677F25A7895D00A9D59B /* Renderer+LiveCode.swift */,
+				E1365D1226CD912200BAFF71 /* Renderer+Save+Load.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -326,11 +346,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Template macOS/Pods-Template macOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Template macOS/Pods-Template macOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -387,11 +405,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Template iOS/Pods-Template iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Template iOS/Pods-Template iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -404,11 +420,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Template tvOS/Pods-Template tvOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Template tvOS/Pods-Template tvOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -444,7 +458,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1365D1926CD919A00BAFF71 /* Paths.swift in Sources */,
 				E14B678125A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */,
+				E1365D1426CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */,
 				E14B675525A785C900A9D59B /* Renderer+Observers.swift in Sources */,
 				E13B5591230F3D44009E143D /* Renderer.swift in Sources */,
 				E13B5565230F3D44009E143D /* AppDelegate.swift in Sources */,
@@ -456,7 +472,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1365D1A26CD919A00BAFF71 /* Paths.swift in Sources */,
 				E14B678225A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */,
+				E1365D1526CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */,
 				E14B675625A785C900A9D59B /* Renderer+Observers.swift in Sources */,
 				E13B5592230F3D44009E143D /* Renderer.swift in Sources */,
 				E13B5576230F3D44009E143D /* AppDelegate.swift in Sources */,
@@ -468,7 +486,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1365D1826CD919A00BAFF71 /* Paths.swift in Sources */,
 				E14B678025A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */,
+				E1365D1326CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */,
 				E14B675425A785C900A9D59B /* Renderer+Observers.swift in Sources */,
 				E13B5593230F3D44009E143D /* Renderer.swift in Sources */,
 				E13B5587230F3D44009E143D /* AppDelegate.swift in Sources */,
@@ -677,10 +697,11 @@
 			baseConfigurationReference = E98B90A250CBE9E58554F068 /* Pods-Template macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Template.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CC7PU3PUHS;
+				DEVELOPMENT_TEAM = H5N5GRKN9A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -700,10 +721,11 @@
 			baseConfigurationReference = 71E9C1EA2BB4FC30588C00D0 /* Pods-Template macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Template.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CC7PU3PUHS;
+				DEVELOPMENT_TEAM = H5N5GRKN9A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
