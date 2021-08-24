@@ -102,9 +102,13 @@ class Renderer: Forge.Renderer, MaterialDelegate {
         Mesh(geometry: IcoSphereGeometry(radius: 2.0, res: 5), material: blobMaterial)
     }()
     
+    lazy var textMesh: Mesh = {
+        Mesh(geometry: ExtrudedTextGeometry(text: "STARGAZE", fontName: "", fontSize: 12, pivot: [0.5, 0.5]), material: BasicDiffuseMaterial())
+    }()
+    
     lazy var scene: Object = {
         let scene = Object()
-        scene.add(blobMesh)
+        scene.add(textMesh)
         return scene
     }()
     

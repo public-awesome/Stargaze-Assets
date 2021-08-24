@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E13B5572230F3D44009E143D"
-               BuildableName = "Template.app"
-               BlueprintName = "Template tvOS"
-               ReferencedContainer = "container:Template.xcodeproj">
+               BlueprintIdentifier = "E13B5583230F3D44009E143D"
+               BuildableName = "Stargaze.app"
+               BlueprintName = "Stargaze macOS"
+               ReferencedContainer = "container:Stargaze.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,7 +31,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E13B5572230F3D44009E143D"
-            BuildableName = "Template.app"
-            BlueprintName = "Template tvOS"
-            ReferencedContainer = "container:Template.xcodeproj">
+            BlueprintIdentifier = "E13B5583230F3D44009E143D"
+            BuildableName = "Stargaze.app"
+            BlueprintName = "Stargaze macOS"
+            ReferencedContainer = "container:Stargaze.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E13B5572230F3D44009E143D"
-            BuildableName = "Template.app"
-            BlueprintName = "Template tvOS"
-            ReferencedContainer = "container:Template.xcodeproj">
+            BlueprintIdentifier = "E13B5583230F3D44009E143D"
+            BuildableName = "Stargaze.app"
+            BlueprintName = "Stargaze macOS"
+            ReferencedContainer = "container:Stargaze.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
