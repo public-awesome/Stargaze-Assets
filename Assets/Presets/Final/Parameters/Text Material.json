@@ -1,0 +1,122 @@
+{
+  "params" : [
+    {
+      "type" : "float4",
+      "base" : {
+        "maxZ" : 1,
+        "minZ" : 0,
+        "label" : "Color",
+        "w" : 1,
+        "x" : 0.99999600648880005,
+        "maxY" : 1,
+        "y" : 1,
+        "minY" : 0,
+        "z" : 1,
+        "maxX" : 1,
+        "controlType" : "colorpicker",
+        "minX" : 0,
+        "maxW" : 1,
+        "minW" : 0
+      }
+    },
+    {
+      "type" : "float4",
+      "base" : {
+        "maxZ" : 1,
+        "minZ" : 0,
+        "label" : "Bounds",
+        "w" : 14.984001159667969,
+        "x" : -97.319999694824219,
+        "maxY" : 1,
+        "y" : -19.384000778198242,
+        "minY" : 0,
+        "z" : 97.271995544433594,
+        "maxX" : 1,
+        "controlType" : "none",
+        "minX" : 0,
+        "maxW" : 1,
+        "minW" : 0
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Smooth",
+        "value" : -1,
+        "min" : -1,
+        "controlType" : "slider",
+        "max" : 1
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Offset",
+        "value" : 0.10000000149011612,
+        "min" : 0,
+        "controlType" : "slider",
+        "max" : 1
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Range",
+        "value" : 0.27500000596046448,
+        "min" : 0,
+        "controlType" : "slider",
+        "max" : 1
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Hue",
+        "value" : 0,
+        "min" : 0,
+        "controlType" : "slider",
+        "max" : 1
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Brightness",
+        "value" : 0.25,
+        "min" : 0,
+        "controlType" : "slider",
+        "max" : 1
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Constrast",
+        "value" : 1,
+        "min" : 1,
+        "controlType" : "slider",
+        "max" : 2
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Vibrance",
+        "value" : 1,
+        "min" : 1,
+        "controlType" : "slider",
+        "max" : 1.5
+      }
+    },
+    {
+      "type" : "float",
+      "base" : {
+        "label" : "Color Gamma",
+        "value" : -1,
+        "min" : -1,
+        "controlType" : "slider",
+        "max" : 1
+      }
+    }
+  ]
+}

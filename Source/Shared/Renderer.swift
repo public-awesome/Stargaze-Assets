@@ -15,7 +15,7 @@ import Satin
 import Youi
 #endif
 
-class BlobMaterial: LiveMaterial {}
+class TextMaterial: LiveMaterial {}
 
 class Renderer: Forge.Renderer, MaterialDelegate {
     // MARK: - Paths
@@ -59,19 +59,19 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     var paramKeys: [String] {
         return [
             "Controls",
-            "Blob Material"
+            "Text Material"
         ]
     }
     
     var params: [String: ParameterGroup?] {
         return [
             "Controls": appParams,
-            "Blob Material": blobMaterial.parameters
+            "Text Material": textMaterial.parameters
         ]
     }
     
-    lazy var blobMaterial: BlobMaterial = {
-        let material = BlobMaterial(pipelinesURL: pipelinesURL)
+    lazy var textMaterial: TextMaterial = {
+        let material = TextMaterial(pipelinesURL: pipelinesURL)
         material.delegate = self
         return material
     }()
@@ -83,27 +83,85 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     
     var observers: [NSKeyValueObservation] = []
     
+    var fontList: [String] {
+        [
+            "BarlowSemiCondensed-Medium",
+            "Dosis-Medium",
+            "Futura-Medium",
+            "AtkinsonHyperlegible-Regular",
+            "Audiowide-Regular",
+            "BellotaText-Regular",
+            "DarkerGrotesque-Regular",
+            "DMSans-Regular",
+            "DMSerifDisplay-Regular",
+            "Goldman-Regular",
+            "Iceland-Regular",
+            "Inter-Regular",
+            "JockeyOne-Regular",
+            "KronaOne-Regular",
+            "KumbhSans-Regular",
+            "LexendDeca-Regular",
+            "MajorMonoDisplay-Regular",
+            "Megrim",
+            "Montserrat-Regular",
+            "Mulish-Regular",
+            "MuseoSans-500",
+            "NTR",
+            "Padauk-Regular",
+            "Poppins-Regular",
+            "Questrial-Regular",
+            "Raleway-Regular",
+            "RedHatDisplay-Regular",
+            "RedHatText-Regular",
+            "Righteous-Regular",
+            "RussoOne-Regular",
+            "SecularOne-Regular",
+            "SFProRounded-Regular",
+            "Sunflower-Medium",
+            "Teko-Regular",
+            "Urbanist-Regular",
+            "Vidaloka-Regular"
+        ]
+    }
+    
     var bgColorParam = Float4Parameter("Background", [1, 1, 1, 1], .colorpicker)
-    lazy var blobVisibleParam: BoolParameter = {
-        let param = BoolParameter("Show Blob", true, .toggle) { [unowned self] value in
-            self.blobMesh.visible = value
+    lazy var fontSizeParam: FloatParameter = {
+        var param = FloatParameter("Font Size", 12, .inputfield) { [unowned self] value in
+            textGeometry.fontSize = value
         }
         return param
     }()
     
+    lazy var fontParam: StringParameter = {
+        var param = StringParameter("Font", "Righteous-Regular", fontList) { [unowned self] value in
+            textGeometry.fontName = value
+        }
+        return param
+    }()
+    
+    lazy var textParam: StringParameter = {
+        var param = StringParameter("Text", "STARGAZE", .inputfield) { [unowned self] value in
+            textGeometry.text = value
+        }
+        return param
+    }()
+    
+    
     lazy var appParams: ParameterGroup = {
         let params = ParameterGroup("Controls")
         params.append(bgColorParam)
-        params.append(blobVisibleParam)
+        params.append(fontParam)
+        params.append(fontSizeParam)
+        params.append(textParam)
         return params
     }()
     
-    lazy var blobMesh: Mesh = {
-        Mesh(geometry: IcoSphereGeometry(radius: 2.0, res: 5), material: blobMaterial)
+    lazy var textGeometry: TextGeometry = {
+        TextGeometry(text: textParam.value, fontName: fontParam.value, fontSize: fontSizeParam.value, pivot: [0.0, 0.0])
     }()
     
     lazy var textMesh: Mesh = {
-        Mesh(geometry: ExtrudedTextGeometry(text: "STARGAZE", fontName: "", fontSize: 12, pivot: [0.5, 0.5]), material: BasicDiffuseMaterial())
+        Mesh(geometry: textGeometry, material: textMaterial)
     }()
     
     lazy var scene: Object = {
@@ -116,16 +174,12 @@ class Renderer: Forge.Renderer, MaterialDelegate {
         Context(device, sampleCount, colorPixelFormat, depthPixelFormat, stencilPixelFormat)
     }()
     
-    lazy var camera: PerspectiveCamera = {
-        let camera = PerspectiveCamera()
-        camera.position = simd_make_float3(0.0, 0.0, 10.0)
-        camera.near = 0.01
-        camera.far = 100.0
-        return camera
+    lazy var camera: OrthographicCamera = {
+        OrthographicCamera()
     }()
     
-    lazy var cameraController: PerspectiveCameraController = {
-        PerspectiveCameraController(camera: camera, view: mtkView)
+    lazy var cameraController: OrthographicCameraController = {
+        OrthographicCameraController(camera: camera, view: mtkView, defaultZoom: 0.05)
     }()
     
     lazy var renderer: Satin.Renderer = {
@@ -139,7 +193,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     }()
     
     override func setupMtkView(_ metalKitView: MTKView) {
-        metalKitView.sampleCount = 1
+        metalKitView.sampleCount = 8
         metalKitView.depthStencilPixelFormat = .depth32Float
         metalKitView.preferredFramesPerSecond = 60
     }
@@ -159,8 +213,9 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     }
 
     override func update() {
-        blobMaterial.set("Time", getTime())
         cameraController.update()
+        let bb = textMesh.bounds
+        textMaterial.set("Bounds", simd_make_float4(bb.min.x, bb.min.y, bb.max.x, bb.max.y))
         #if os(macOS) || os(iOS)
         updateInspector()
         #endif
@@ -172,7 +227,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
     }
     
     override func resize(_ size: (width: Float, height: Float)) {
-        camera.aspect = size.width / size.height
+        cameraController.resize(size)
         renderer.resize(size)
     }
     
