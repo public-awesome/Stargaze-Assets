@@ -13,7 +13,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <customObject id="irT-1T-yP4" userLabel="App Delegate" customClass="AppDelegate" customModule="Template" customModuleProvider="target">
+        <customObject id="irT-1T-yP4" userLabel="App Delegate" customClass="AppDelegate" customModule="Stargaze" customModuleProvider="target">
             <connections>
                 <outlet property="presetsMenu" destination="9kM-M6-YH2" id="Xp2-Vy-6al"/>
             </connections>
@@ -97,6 +97,20 @@
                                     <items>
                                         <menuItem title="Item" id="GLC-cH-8N8">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="8eH-3e-i4F"/>
+                            <menuItem title="Export" id="wtk-xG-Dmg">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Export" id="EuQ-w0-HMV">
+                                    <items>
+                                        <menuItem title="Image" id="Psb-HM-xxk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportImage:" target="irT-1T-yP4" id="A30-zA-nQQ"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>

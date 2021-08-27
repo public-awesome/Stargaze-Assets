@@ -145,7 +145,8 @@ class Renderer: Forge.Renderer, MaterialDelegate {
         }
         return param
     }()
-    
+
+    var exportScaleParam = IntParameter("Export Scale", 4, .inputfield)
     
     lazy var appParams: ParameterGroup = {
         let params = ParameterGroup("Controls")
@@ -153,6 +154,7 @@ class Renderer: Forge.Renderer, MaterialDelegate {
         params.append(fontParam)
         params.append(fontSizeParam)
         params.append(textParam)
+        params.append(exportScaleParam)
         return params
     }()
     

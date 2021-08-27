@@ -217,6 +217,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         })
     }
     
+    // MARK: - Exporting
+
+    @IBAction func exportImage(_ sender: NSMenuItem) {
+        guard let renderer = self.renderer else { return }
+        let panel = NSSavePanel()
+        panel.canCreateDirectories = true
+        panel.showsTagField = false
+        panel.nameFieldStringValue = ""
+        panel.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.modalPanelWindow)))
+        panel.begin { result in
+            if result.rawValue == NSApplication.ModalResponse.OK.rawValue, let url = panel.url {
+                _ = renderer.exportImage(url)
+            }
+        }
+    }
+    
+    
     
     // MARK: - Editor
     

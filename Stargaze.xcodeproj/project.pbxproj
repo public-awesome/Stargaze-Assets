@@ -31,6 +31,12 @@
 		E14B678025A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B677F25A7895D00A9D59B /* Renderer+LiveCode.swift */; };
 		E14B678125A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B677F25A7895D00A9D59B /* Renderer+LiveCode.swift */; };
 		E14B678225A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B677F25A7895D00A9D59B /* Renderer+LiveCode.swift */; };
+		E1603ADF26D9738800FA14ED /* Tiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1603ADE26D9738800FA14ED /* Tiler.swift */; };
+		E1603AE026D9738800FA14ED /* Tiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1603ADE26D9738800FA14ED /* Tiler.swift */; };
+		E1603AE126D9738800FA14ED /* Tiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1603ADE26D9738800FA14ED /* Tiler.swift */; };
+		E1603AE326D973C200FA14ED /* Renderer+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1603AE226D973C200FA14ED /* Renderer+Export.swift */; };
+		E1603AE426D973C200FA14ED /* Renderer+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1603AE226D973C200FA14ED /* Renderer+Export.swift */; };
+		E1603AE526D973C200FA14ED /* Renderer+Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1603AE226D973C200FA14ED /* Renderer+Export.swift */; };
 		E1C45ADE243E6351007D0207 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C45ADD243E6351007D0207 /* MainMenu.xib */; };
 		EC72F04DEEE844049A54AC77 /* Pods_Stargaze_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 804FE11DC23E73DFF41A36D2 /* Pods_Stargaze_macOS.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +65,8 @@
 		E14B674F25A785C800A9D59B /* Renderer+Inspector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Renderer+Inspector.swift"; sourceTree = "<group>"; };
 		E14B675025A785C800A9D59B /* Renderer+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Renderer+Observers.swift"; sourceTree = "<group>"; };
 		E14B677F25A7895D00A9D59B /* Renderer+LiveCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Renderer+LiveCode.swift"; sourceTree = "<group>"; };
+		E1603ADE26D9738800FA14ED /* Tiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tiler.swift; sourceTree = "<group>"; };
+		E1603AE226D973C200FA14ED /* Renderer+Export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Renderer+Export.swift"; sourceTree = "<group>"; };
 		E1C45ADD243E6351007D0207 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		E1C45AFD243E6B9F007D0207 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +121,7 @@
 		E1365D1626CD918F00BAFF71 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E1603ADE26D9738800FA14ED /* Tiler.swift */,
 				E1365D1726CD919A00BAFF71 /* Paths.swift */,
 			);
 			path = Utilities;
@@ -139,6 +148,7 @@
 				E14B675025A785C800A9D59B /* Renderer+Observers.swift */,
 				E14B677F25A7895D00A9D59B /* Renderer+LiveCode.swift */,
 				E1365D1226CD912200BAFF71 /* Renderer+Save+Load.swift */,
+				E1603AE226D973C200FA14ED /* Renderer+Export.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -440,12 +450,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1603AE426D973C200FA14ED /* Renderer+Export.swift in Sources */,
 				E1365D1926CD919A00BAFF71 /* Paths.swift in Sources */,
 				E14B678125A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */,
 				E1365D1426CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */,
 				E14B675525A785C900A9D59B /* Renderer+Observers.swift in Sources */,
 				E13B5591230F3D44009E143D /* Renderer.swift in Sources */,
 				E13B5565230F3D44009E143D /* AppDelegate.swift in Sources */,
+				E1603AE026D9738800FA14ED /* Tiler.swift in Sources */,
 				E14B675225A785C900A9D59B /* Renderer+Inspector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,12 +466,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1603AE526D973C200FA14ED /* Renderer+Export.swift in Sources */,
 				E1365D1A26CD919A00BAFF71 /* Paths.swift in Sources */,
 				E14B678225A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */,
 				E1365D1526CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */,
 				E14B675625A785C900A9D59B /* Renderer+Observers.swift in Sources */,
 				E13B5592230F3D44009E143D /* Renderer.swift in Sources */,
 				E13B5576230F3D44009E143D /* AppDelegate.swift in Sources */,
+				E1603AE126D9738800FA14ED /* Tiler.swift in Sources */,
 				E14B675325A785C900A9D59B /* Renderer+Inspector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,12 +482,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1603AE326D973C200FA14ED /* Renderer+Export.swift in Sources */,
 				E1365D1826CD919A00BAFF71 /* Paths.swift in Sources */,
 				E14B678025A7895D00A9D59B /* Renderer+LiveCode.swift in Sources */,
 				E1365D1326CD912200BAFF71 /* Renderer+Save+Load.swift in Sources */,
 				E14B675425A785C900A9D59B /* Renderer+Observers.swift in Sources */,
 				E13B5593230F3D44009E143D /* Renderer.swift in Sources */,
 				E13B5587230F3D44009E143D /* AppDelegate.swift in Sources */,
+				E1603ADF26D9738800FA14ED /* Tiler.swift in Sources */,
 				E14B675125A785C900A9D59B /* Renderer+Inspector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
