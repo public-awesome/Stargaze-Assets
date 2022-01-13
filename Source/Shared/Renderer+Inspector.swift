@@ -12,9 +12,8 @@ import Youi
 #endif
 
 extension Renderer {
-    #if os(macOS) || os(iOS)
     // MARK: - UI
-    
+#if os(macOS) || os(iOS)
     func setupInspector() {
         var panelOpenStates: [String: Bool] = [:]
         if let inspectorWindow = self.inspectorWindow, let inspector = inspectorWindow.inspectorViewController {
@@ -73,12 +72,14 @@ extension Renderer {
             _updateInspector = false
         }
     }
+#endif
     
+#if os(macOS)
     public func toggleInspector()
     {
         if let inspectorWindow = self.inspectorWindow {
             inspectorWindow.setIsVisible(!inspectorWindow.isVisible)
         }
     }
-    #endif
+#endif
 }

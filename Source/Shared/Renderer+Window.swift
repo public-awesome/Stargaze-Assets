@@ -9,7 +9,7 @@
 import Satin
 
 extension Renderer {
-   
+#if os(macOS)
     func updateWindow()
     {
         guard _updateWindow, let window = self.mtkView.window else { return }
@@ -44,4 +44,5 @@ extension Renderer {
             }
         }
     }
+#endif
 }

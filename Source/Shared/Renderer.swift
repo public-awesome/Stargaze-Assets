@@ -15,7 +15,7 @@ import Satin
 import Youi
 #endif
 
-class Renderer: Forge.Renderer, MaterialDelegate, NSWindowDelegate {
+class Renderer: Forge.Renderer, MaterialDelegate {
     class TextMaterial: LiveMaterial {}
     
     // MARK: - Paths
@@ -236,7 +236,9 @@ class Renderer: Forge.Renderer, MaterialDelegate, NSWindowDelegate {
     }
 
     override func update() {
+#if os(macOS)
         updateWindow()
+#endif
         cameraController.update()
         #if os(macOS) || os(iOS)
         updateInspector()
@@ -251,7 +253,9 @@ class Renderer: Forge.Renderer, MaterialDelegate, NSWindowDelegate {
     override func resize(_ size: (width: Float, height: Float)) {
         cameraController.resize(size)
         renderer.resize(size)
+#if os(macOS)
         updateWindowParams()
+#endif
     }
 
     func updated(material: Material) {
