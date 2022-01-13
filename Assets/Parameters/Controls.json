@@ -6,12 +6,12 @@
         "maxZ" : 1,
         "minZ" : 0,
         "label" : "Background",
-        "w" : 1,
-        "x" : 0,
+        "w" : 0,
+        "x" : 0.99990183115005493,
         "maxY" : 1,
-        "y" : 0,
+        "y" : 1,
         "minY" : 0,
-        "z" : 0,
+        "z" : 0.99987989664077759,
         "maxX" : 1,
         "controlType" : "colorpicker",
         "minX" : 0,
@@ -23,7 +23,7 @@
       "type" : "string",
       "base" : {
         "label" : "Font",
-        "value" : "BarlowSemiCondensed-Medium",
+        "value" : "Futura-Medium",
         "options" : [
           "BarlowSemiCondensed-Medium",
           "Dosis-Medium",
@@ -69,7 +69,7 @@
       "type" : "float",
       "base" : {
         "label" : "Font Size",
-        "value" : 48,
+        "value" : 32,
         "min" : 0,
         "controlType" : "inputfield",
         "max" : 1
@@ -84,6 +84,29 @@
 
         ],
         "controlType" : "inputfield"
+      }
+    },
+    {
+      "type" : "int",
+      "base" : {
+        "label" : "Export Scale",
+        "value" : 4,
+        "min" : 0,
+        "controlType" : "inputfield",
+        "max" : 100
+      }
+    },
+    {
+      "type" : "int2",
+      "base" : {
+        "maxX" : 100,
+        "controlType" : "inputfield",
+        "x" : 1392,
+        "y" : 550,
+        "maxY" : 100,
+        "minX" : 0,
+        "label" : "Window Size",
+        "minY" : 0
       }
     }
   ]

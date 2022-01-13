@@ -139,7 +139,7 @@ class Tiler {
             let b: Float = bottom + yf * heightInc
             let t: Float = b + heightInc
             
-            camera.projectionMatrix = frustum(l, r, b, t, camera.near, camera.far)
+            camera.projectionMatrix = frustrumMatrixf(l, r, b, t, camera.near, camera.far)
         }
         else if let camera = camera as? OrthographicCamera {
             let width = _right - _left
